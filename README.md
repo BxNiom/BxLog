@@ -15,6 +15,11 @@ Conditional logging:
     BX_LOG_IF( [error | warn | info | debug | verbose], condition ) << Message
 ```
 
+Set log level:
+```cpp
+    BX_LOG_LEVEL( [error | warn | info | debug | verbose] )
+```
+
 __Example__
 ```cpp
 #include <bxlog.hpp>
