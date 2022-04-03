@@ -1,4 +1,6 @@
+![GitHub top language](https://img.shields.io/github/languages/top/BxNiom/BxLog?color=11324D&style=flat-square) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BxNiom/BxLog?color=11324D&style=flat-square) ![GitHub](https://img.shields.io/github/license/BxNiom/BxLog?color=11324D&style=flat-square) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/BxNiom/BxLog/CMake?style=flat-square)<br>
 # BxLog
+
 Simple logging for C++
 
 ## Usage
@@ -69,3 +71,5 @@ int main() {
 | %ln        | Line                                                                                                         |
 | %ti        | Thread ID                                                                                                    |
 | %m         | Message                                                                                                      |
+
+[![GitHub BxNiom](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://www.github.com/BxNiom)
