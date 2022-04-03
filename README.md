@@ -3,7 +3,7 @@ Simple logging for C++
 
 ## Usage
 
-###Syntax
+### Syntax
 
 Default usage:
 ```cpp
@@ -27,7 +27,7 @@ int main() {
 }
 ```
 
-##Message format
+## Message format
 
 Default message format:
 ```shell
@@ -35,10 +35,10 @@ Default message format:
 ```
 Output:
 ```shell
-[2022-04-03 17:38:23] INFO | 0x7c5e230adf | main.cpp(15) : Hello from BxLog
+[2022-04-03 17:38:23] INFO | 0x7c5e230adf | main.cpp(4) : Hello from BxLog
 ```
 
-###Customisation
+### Customisation
 Message format currently only configurable in code
 
 ```cpp
@@ -50,7 +50,7 @@ int main() {
 }
 ```
 
-###Possible format parameters<br>
+### Possible format parameters<br>
 
 | Ident      | Description                                                                                                  |
 |------------|--------------------------------------------------------------------------------------------------------------|
