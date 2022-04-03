@@ -15,23 +15,23 @@
 namespace bxniom { namespace log {
 
     enum class LogLevel {
-        None = 0,
-        Error = 1,
-        Warning = 2,
-        Info = 3,
-        Debug = 4,
-        Verbose = 5
+        none = 0,
+        error = 1,
+        warning = 2,
+        info = 3,
+        debug = 4,
+        verbose = 5
     };
 
     static std::string to_string(LogLevel l) {
         switch(l)
         {
-            case LogLevel::None: return "None";
-            case LogLevel::Error: return "Error";
-            case LogLevel::Warning: return "Warning";
-            case LogLevel::Info: return "Info";
-            case LogLevel::Debug: return "Debug";
-            case LogLevel::Verbose: return "Verbose";
+            case LogLevel::none: return "None";
+            case LogLevel::error: return "Error";
+            case LogLevel::warning: return "Warning";
+            case LogLevel::info: return "Info";
+            case LogLevel::debug: return "Debug";
+            case LogLevel::verbose: return "Verbose";
         }
 
         return "Unknown";
@@ -40,12 +40,12 @@ namespace bxniom { namespace log {
     static std::ostream& operator<<(std::ostream& os, LogLevel l) {
         switch(l)
         {
-            case LogLevel::None: os << "LogLevel::None"; return os;
-            case LogLevel::Error: os << "LogLevel::Error"; return os;
-            case LogLevel::Warning: os << "LogLevel::Warning"; return os;
-            case LogLevel::Info: os << "LogLevel::Info"; return os;
-            case LogLevel::Debug: os << "LogLevel::Debug"; return os;
-            case LogLevel::Verbose: os << "LogLevel::Verbose"; return os;
+            case LogLevel::none: os << "LogLevel::None"; return os;
+            case LogLevel::error: os << "LogLevel::Error"; return os;
+            case LogLevel::warning: os << "LogLevel::Warning"; return os;
+            case LogLevel::info: os << "LogLevel::Info"; return os;
+            case LogLevel::debug: os << "LogLevel::Debug"; return os;
+            case LogLevel::verbose: os << "LogLevel::Verbose"; return os;
         }
 
         return os << "LogLevel::Unknown";

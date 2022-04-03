@@ -28,8 +28,6 @@ namespace bxniom { namespace log {
     class Log {
         friend class Linter;
         private:
-
-        private:
             static Log* _singletone;
 
             bool _running = false;
@@ -39,6 +37,7 @@ namespace bxniom { namespace log {
             std::string _msgFormat = "[%d %t] %lv.upper | %ti | %fi(%ln): %m";
             Linter _linter;
             std::mutex _mtx;
+            LogLevel _level = LogLevel::info;
 
             Log();
             
@@ -75,6 +74,9 @@ namespace bxniom { namespace log {
 
             std::string format() const { return _msgFormat; }
             void format(std::string format);
+
+            LogLevel maxLevel() const { return _level; }
+            void maxLevel(LogLevel lvl) { _level = lvl; }
     };
 }}
 

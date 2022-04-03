@@ -67,6 +67,9 @@ void Log::format(std::string format) {
 void Log::write(LogLevel lvl, std::string msg,
               std::string file, std::string fn, std::string ln,
               std::thread::id threadid) {
+
+    if (lvl > _level) return;
+
     LogInfo info;
     info.level = lvl;
     info.msg = msg;

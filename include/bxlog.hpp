@@ -18,14 +18,10 @@
 
 #include <thread>
 
-#define error 1
-#define warn 2
-#define info 3
-#define debug 4
-#define verbose 5
 
-#define BX_LOG(level) bxniom::log::LogWrapper(level, __FILE__, __FUNCTION__, __LINE__, std::this_thread::get_id())
+#define BX_LOG(level) bxniom::log::LogWrapper(bxniom::log::LogLevel::level, __FILE__, __FUNCTION__, __LINE__, std::this_thread::get_id())
 
 #define BX_LOG_IF(level, condition) if (condition) BX_LOG(level)
+#define BX_LOG_LEVEL(level) bxniom::log::Log::getInstance()->maxLevel(bxniom::log::LogLevel::level)
 
 #endif /* end of include guard: __BXLOG_HPP */

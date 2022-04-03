@@ -25,8 +25,8 @@ namespace bxniom { namespace log {
             std::thread::id _threadId;
             std::stringstream _ss;
         public:
-            LogWrapper(int lvl, const char* file, const char* func, int line, std::thread::id threadId)
-                    : _lvl(LogLevel(lvl)), _file(file), _func(func), _line(std::to_string(line)), _threadId(threadId) {
+            LogWrapper(LogLevel lvl, const char* file, const char* func, int line, std::thread::id threadId)
+                    : _lvl(lvl), _file(file), _func(func), _line(std::to_string(line)), _threadId(threadId) {
             }
 
             ~LogWrapper() {
