@@ -13,23 +13,23 @@ project(${PROJECT_NAME}
         HOMEPAGE_URL "https://www.github.com/BxNiom")
 
 set(LIBRARY_HEADERS include/bxlog/log.hpp
-                    include/bxlog/log_info.hpp
-                    include/bxlog/log_level.hpp
-                    include/bxlog/log_linter.hpp
-                    include/bxlog/log_wrapper.hpp
-                    include/bxlog/logger.hpp)
+        include/bxlog/log_info.hpp
+        include/bxlog/log_level.hpp
+        include/bxlog/log_linter.hpp
+        include/bxlog/log_wrapper.hpp
+        include/bxlog/logger.hpp)
 
 
-set(LIBRARY_SOURCE src/log.cpp 
-                   src/log_linter.cpp
+set(LIBRARY_SOURCE src/log.cpp
+        src/log_linter.cpp
         )
 
 add_library(${LIBRARY_NAME} STATIC include/bxlog.hpp ${LIBRARY_HEADERS} ${LIBRARY_SOURCE})
 
 target_compile_features(${LIBRARY_NAME} INTERFACE cxx_std_14)
 set_target_properties(${LIBRARY_NAME} PROPERTIES
-                      LINKER_LANGUAGE CXX
-                      CXX_STANDARD 14)
+        LINKER_LANGUAGE CXX
+        CXX_STANDARD 14)
 
 
 target_include_directories(${LIBRARY_NAME} PRIVATE
@@ -58,9 +58,9 @@ install(FILES ${LIBRARY_HEADERS}
 install(FILES include/bxlog.hpp
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-IF( EXISTS "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json" )
-  EXECUTE_PROCESS( COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json
-    ${CMAKE_CURRENT_SOURCE_DIR}/compile_commands.json
-  )
-ENDIF()
+IF (EXISTS "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json")
+    EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json
+            ${CMAKE_CURRENT_SOURCE_DIR}/compile_commands.json
+            )
+ENDIF ()

@@ -18,20 +18,22 @@
 #include "log_info.hpp"
 
 namespace bxniom { namespace log {
-    
-   class Linter {
-       public:
+
+    class Linter {
+        public:
             class FormatItem {
                 public:
-                    virtual ~FormatItem() { }
+                    virtual ~FormatItem() {}
+
                     virtual std::string parse(LogInfo& info) { return ""; }
             };
 
-           class StringItem : public virtual FormatItem {
+            class StringItem : public virtual FormatItem {
                 private:
                     std::string _value;
                 public:
                     StringItem(std::string value) : _value(value) {}
+
                     std::string parse(LogInfo& info) override { return _value; }
             };
 
@@ -40,6 +42,7 @@ namespace bxniom { namespace log {
                     std::string _fmt;
                 public:
                     DateTimeItem(std::string fmt) : _fmt(fmt) {}
+
                     std::string parse(LogInfo& info) override {
                         char buf[32];
                         std::tm* ptm = std::localtime(&info.timestamp);
@@ -48,25 +51,26 @@ namespace bxniom { namespace log {
                     }
             };
 
-           class LevelItem : public virtual FormatItem {
-               private:
-                   bool _upper = false;
-                   bool _lower = false;
-               public:
-                   LevelItem(bool upper, bool lower) : _upper(upper), _lower(lower) {}
-                   std::string parse(LogInfo& info) override {
-                       std::string res = bxniom::log::to_string(info.level);
-                       if (_upper) {
-                           transform(res.begin(), res.end(), res.begin(), ::toupper);
-                       } else if(_lower) {
-                           transform(res.begin(), res.end(), res.begin(), ::tolower);
-                       }
+            class LevelItem : public virtual FormatItem {
+                private:
+                    bool _upper = false;
+                    bool _lower = false;
+                public:
+                    LevelItem(bool upper, bool lower) : _upper(upper), _lower(lower) {}
 
-                       return res;
-                   }
-           };
+                    std::string parse(LogInfo& info) override {
+                        std::string res = bxniom::log::to_string(info.level);
+                        if (_upper) {
+                            transform(res.begin(), res.end(), res.begin(), ::toupper);
+                        } else if (_lower) {
+                            transform(res.begin(), res.end(), res.begin(), ::tolower);
+                        }
 
-#define __PROPERTY_ITEM( n, p )                                 \
+                        return res;
+                    }
+            };
+
+#define __PROPERTY_ITEM(n, p)                                 \
    class n: public virtual Linter::FormatItem {                 \
        public:                                                  \
             n() { }                                             \
@@ -75,21 +79,31 @@ namespace bxniom { namespace log {
             }                                                   \
    };                                                           \
 
+
             __PROPERTY_ITEM(FilenameItem, file)
+
             __PROPERTY_ITEM(LineItem, line)
+
             __PROPERTY_ITEM(FunctionItem, fn)
+
             __PROPERTY_ITEM(ThreadItem, threadId)
+
             __PROPERTY_ITEM(MessageItem, msg)
 
-       private:
+        private:
             std::list<FormatItem*> _items;
-            Linter() { }
+
+            Linter() {}
+
             void decode(std::string format, int pos);
+
             std::string readUntil(std::string s, int& pos, char until);
+
         public:
             static Linter create(std::string format);
-            std::string parse(LogInfo& info);       
-   }; 
+
+            std::string parse(LogInfo& info);
+    };
 
 
 }}

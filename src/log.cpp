@@ -18,7 +18,7 @@ using namespace std::chrono_literals;
 
 Log* Log::_singletone = 0;
 
-Log::Log() : _linter(Linter::create(_msgFormat)){
+Log::Log() : _linter(Linter::create(_msgFormat)) {
     signal(SIGABRT, Log::close);
     signal(SIGTERM, Log::close);
     atexit(Log::close);
@@ -31,7 +31,7 @@ Log::Log() : _linter(Linter::create(_msgFormat)){
 void Log::run() {
     _running = true;
     _loop = new std::thread([&] {
-        while(_running) {
+        while (_running) {
             write();
             std::this_thread::sleep_for(1ms);
         }
@@ -44,7 +44,7 @@ void Log::write() {
         _mtx.lock();
         auto msg = _linter.parse(_logQueue.front());
 
-        for(Logger* it: _logger) {
+        for (Logger* it: _logger) {
             it->write(_logQueue.front().level, msg);
         }
 
@@ -65,8 +65,8 @@ void Log::format(std::string format) {
 }
 
 void Log::write(LogLevel lvl, std::string msg,
-              std::string file, std::string fn, std::string ln,
-              std::thread::id threadid) {
+                std::string file, std::string fn, std::string ln,
+                std::thread::id threadid) {
 
     if (lvl > _level) return;
 

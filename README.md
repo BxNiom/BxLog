@@ -8,21 +8,25 @@ Simple logging for C++
 ### Syntax
 
 Default usage:
+
 ```cpp
     BX_LOG( [error | warn | info | debug | verbose] ) << Message
 ```
 
 Conditional logging:
+
 ```cpp
     BX_LOG_IF( [error | warn | info | debug | verbose], condition ) << Message
 ```
 
 Set log level:
+
 ```cpp
     BX_LOG_LEVEL( [error | warn | info | debug | verbose] )
 ```
 
 __Example__
+
 ```cpp
 #include <bxlog.hpp>
 
@@ -37,15 +41,19 @@ int main() {
 ## Message format
 
 Default message format:
+
 ```shell
 "[%d %t] %lv.upper | %ti | %fi(%ln): %m"
 ```
+
 Output:
+
 ```shell
 [2022-04-03 17:38:23] INFO | 0x7c5e230adf | main.cpp(4) : Hello from BxLog
 ```
 
 ### Customisation
+
 Message format currently only configurable in code
 
 ```cpp

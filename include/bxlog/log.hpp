@@ -26,7 +26,8 @@ namespace bxniom { namespace log {
     class Linter;
 
     class Log {
-        friend class Linter;
+            friend class Linter;
+
         private:
             static Log* _singletone;
 
@@ -40,8 +41,9 @@ namespace bxniom { namespace log {
             LogLevel _level = LogLevel::info;
 
             Log();
-            
+
             void run();
+
             void write();
 
             static void close() { close(0); }
@@ -54,10 +56,11 @@ namespace bxniom { namespace log {
                 if (l->_loop->joinable())
                     l->_loop->joinable();
 
-                while(!l->_logQueue.empty()) {
+                while (!l->_logQueue.empty()) {
                     l->write();
                 }
             }
+
         public:
             static Log* getInstance() {
                 if (!Log::_singletone)
@@ -65,17 +68,19 @@ namespace bxniom { namespace log {
 
                 return Log::_singletone;
             }
-            
+
             void add(Logger* logger);
 
-            void write(LogLevel lvl, std::string msg, 
-                    std::string file, std::string fn, std::string ln,
-                    std::thread::id threadid);
+            void write(LogLevel lvl, std::string msg,
+                       std::string file, std::string fn, std::string ln,
+                       std::thread::id threadid);
 
             std::string format() const { return _msgFormat; }
+
             void format(std::string format);
 
             LogLevel maxLevel() const { return _level; }
+
             void maxLevel(LogLevel lvl) { _level = lvl; }
     };
 }}

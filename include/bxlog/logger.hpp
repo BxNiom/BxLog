@@ -18,12 +18,13 @@ namespace bxniom { namespace log {
     class Logger {
         public:
             virtual ~Logger() {}
+
             virtual void write(const LogLevel lvl, const std::string& msg) = 0;
     };
 
     class ConsoleLogger : public virtual Logger {
         public:
-            void write(const LogLevel lvl, const std::string &msg) override {
+            void write(const LogLevel lvl, const std::string& msg) override {
                 if (lvl == LogLevel::error) {
                     std::cerr << msg << "\n";
                     std::cerr.flush();

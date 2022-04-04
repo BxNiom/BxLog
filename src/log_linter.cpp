@@ -109,7 +109,7 @@ std::string Linter::readUntil(std::string s, int& pos, char until) {
 
 std::string Linter::parse(LogInfo& info) {
     std::string res = "";
-    for(auto it: _items) {
+    for (auto it: _items) {
         res += it->parse(info);
     }
 
