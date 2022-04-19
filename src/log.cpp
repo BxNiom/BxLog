@@ -72,6 +72,9 @@ void Log::write(LogLevel lvl, std::string msg,
 
     LogInfo info;
     info.level = lvl;
+
+
+
     info.msg = msg;
 
     int l;

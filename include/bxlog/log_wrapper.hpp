@@ -38,7 +38,7 @@ namespace bxniom { namespace log {
                                           _threadId);
             }
 
-            template<class T>
+            template<typename T>
             LogWrapper& operator<<(T value) {
                 _ss << value;
                 return *this;
